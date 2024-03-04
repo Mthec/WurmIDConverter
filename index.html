@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+  <title>Wurm ID Converter</title>
+  <script>
+    window.onload = () => {
+  	var answer = document.getElementById("answer");
+  	document.getElementById("calculate").onclick = () => {
+    	try {
+      	let id_str = document.getElementById("wurm_id").value;
+    		let a = BigInt(id_str) >> 32n;
+        let b = parseInt(id_str) >> 32;
+        
+        answer.innerText = "Data1 = " + a + "\nData2 = " + b;
+      } catch (e) {
+      	answer.innerText = "Something went wrong."
+        throw e;
+      }    
+    }
+  }
+  </script>
+</head>
+<body>
+  <h1>Wurm ID Converter</h1>
+  <p id="answer">Data1 = -1<br>Data2 = -1</p>
+  <label for="wurm_id">Wurm ID </label><input type="text" id="wurm_id" />
+  <button id="calculate">Calculate</button>
+</body>
